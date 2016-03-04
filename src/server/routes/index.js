@@ -7,8 +7,16 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.post('/', function(req, res, next) {
-  console.log(req.body.email);
+router.post('/', validEmail, function(req, res, next) {
+  res.render('index');
 });
+
+function validEmail(req, res, next) {
+  if (email.indexOf(req.body.email === -1)) {
+      res.send('you fucked up!');
+  } else {
+    return next();
+  }
+}
 
 module.exports = router;
